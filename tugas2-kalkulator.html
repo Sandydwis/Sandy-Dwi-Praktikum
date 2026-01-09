@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Modul 8 - Kalkulator Sederhana</title>
+  <style>
+    body{font-family:Arial, sans-serif; padding:20px; background:#f4f4f4;}
+    .box{max-width:520px; background:#fff; padding:16px; border:1px solid #ddd; border-radius:10px;}
+    label{display:block; margin:10px 0 6px;}
+    input{width:100%; padding:10px; border:1px solid #bbb; border-radius:8px;}
+    .row{display:flex; gap:10px; margin-top:12px; flex-wrap:wrap;}
+    button{padding:10px 14px; border:0; border-radius:8px; cursor:pointer; min-width:70px;}
+    .op{background:#222; color:#fff;}
+    .reset{background:#888; color:#fff;}
+    .small{margin-top:18px; font-size:12px; color:#666;}
+  </style>
+</head>
+<body>
+
+  <div class="box">
+    <h2>Kalkulator Sederhana</h2>
+    <p>Isi Bil 1 dan Bil 2, lalu tekan operator.</p>
+
+    <label for="bil1">Bil 1</label>
+    <input type="number" id="bil1" placeholder="contoh: 10">
+
+    <label for="bil2">Bil 2</label>
+    <input type="number" id="bil2" placeholder="contoh: 5">
+
+    <label for="hasil">Hasil</label>
+    <input type="text" id="hasil" readonly placeholder="hasil akan muncul di sini">
+
+    <div class="row">
+      <button class="op" onclick="hitung('+')">+</button>
+      <button class="op" onclick="hitung('-')">-</button>
+      <button class="op" onclick="hitung('*')">x</button>
+      <button class="op" onclick="hitung('/')">/</button>
+      <button class="reset" onclick="bersihkan()">Reset</button>
+    </div>
+
+    <div class="small" id="lastMod"></div>
+  </div>
+
+  <script>
+    function ambilAngka(id){
+      const v = document.getElementById(id).value;
+      if (v === "") return null;
+      return Number(v);
+    }
+
+    function hitung(op){
+      const a = ambilAngka("bil1");
+      const b = ambilAngka("bil2");
+      const out = document.getElementById("hasil");
+
+      if (a === null || b === null) {
+        out.value = "Isi Bil 1 dan Bil 2 dulu!";
+        return;
+      }
+      if (isNaN(a) || isNaN(b)) {
+        out.value = "Input harus angka!";
+        return;
+      }
+
+      let result;
+
+      switch(op){
+        case '+': result = a + b; break;
+        case '-': result = a - b; break;
+        case '*': result = a * b; break;
+        case '/':
+          if (b === 0){
+            out.value = "Tidak bisa dibagi 0!";
+            return;
+          }
+          result = a / b;
+          break;
+        default:
+          out.value = "Operator tidak dikenali";
+          return;
+      }
+
+      out.value = result;
+    }
+
+    function bersihkan(){
+      document.getElementById("bil1").value = "";
+      document.getElementById("bil2").value = "";
+      document.getElementById("hasil").value = "";
+      document.getElementById("bil1").focus();
+    }
+
+    // contoh sesuai modul: lastModified
+    document.getElementById("lastMod").innerHTML =
+      "Dimodifikasi terakhir pada " + document.lastModified;
+  </script>
+
+</body>
+</html>
