@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>WEB PORTOFOLIO KU</title>
+
+  <style>
+    /* ===============================
+       CSS LAYOUTING - MATERI WAJIB
+       - div, display, dimension, overflow
+       - box model (margin, border, padding)
+       - box sizing
+       - float (text wrapping, image gallery, multi column)
+       - position
+    =============================== */
+
+    /* box sizing */
+    *{ box-sizing:border-box; }
+
+    body{
+      margin:0;
+      font-family:Arial, sans-serif;
+      background:#cfcfcf;
+    }
+
+    /* dimension */
+    .page{
+      width:900px;
+      max-width:95%;
+      margin:25px auto;            /* box model margin */
+      background:#e9e9e9;
+      border:6px solid #111;       /* box model border */
+    }
+
+    /* ===== HEADER TITLE ===== */
+    .pageTitle{
+      text-align:left;
+      font-weight:bold;
+      padding:12px 18px;
+      background:#e9e9e9;
+      letter-spacing:1px;
+    }
+
+    /* ===== BANNER AREA (position + overflow) ===== */
+    .banner{
+      position:relative;           /* position */
+      height:210px;                /* dimension */
+      overflow:hidden;             /* overflow */
+      border-top:2px solid #999;
+      border-bottom:2px solid #999;
+      background:
+        linear-gradient(120deg, rgba(0,0,0,.5), rgba(0,0,0,.15)),
+        radial-gradient(circle at 30% 30%, rgba(255,255,255,.35), transparent 55%),
+        linear-gradient(180deg, #2b2b2b, #6b6b6b);
+      /* Jika ada banner.jpg, dia akan tampil */
+      background-image:
+        linear-gradient(120deg, rgba(0,0,0,.5), rgba(0,0,0,.15)),
+        url("banner.jpg");
+      background-size:cover;
+      background-position:center;
+    }
+
+    /* menu tab seperti contoh */
+    .menu{
+      position:absolute;
+      top:10px;
+      left:50%;
+      transform:translateX(-50%);
+      display:flex;               /* display flex */
+      gap:14px;
+    }
+    .menu a{
+      display:inline-block;       /* display inline-block */
+      padding:10px 22px;
+      background:rgba(0,0,0,.55);
+      color:#fff;
+      border:2px solid rgba(255,255,255,.25);
+      border-radius:6px 6px 0 0;
+      font-size:14px;
+      text-transform:uppercase;
+    }
+
+    /* ===== CONTENT AREA ===== */
+    .content{
+      padding:0;
+      background:#e9e9e9;
+    }
+
+    /* 2 kolom mirip contoh (float) */
+    .left{
+      float:left;                 /* float */
+      width:38%;                  /* dimension */
+      min-height:360px;
+      background:#4a4a4a;
+      color:#eee;
+      padding:18px;               /* padding */
+      border-right:6px solid #111;
+    }
+    .left h3{
+      margin:0 0 10px 0;
+      letter-spacing:1px;
+    }
+    .left p{
+      font-size:13px;
+      line-height:1.55;
+      margin:0 0 10px 0;
+    }
+
+    .right{
+      float:left;                 /* float */
+      width:62%;
+      min-height:360px;
+      background:#f7f7f7;
+      padding:18px;
+    }
+
+    /* kotak SD SMP SMA S1 */
+    .eduRow{
+      margin-top:6px;
+      margin-bottom:14px;
+      display:flex;
+      gap:14px;
+    }
+    .eduBox{
+      width:95px;
+      height:75px;
+      border:3px solid #111;
+      background:#5b5b5b;
+      color:#fff;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-weight:bold;
+      letter-spacing:1px;
+    }
+
+    /* text wrapping demo (float) */
+    .wrapDemo{
+      margin-top:6px;
+    }
+    .fakeImg{
+      float:left;
+      width:120px;
+      height:90px;
+      margin:0 12px 8px 0;       /* margin for wrapping */
+      border:3px solid #111;
+      background:linear-gradient(135deg,#222,#777);
+    }
+
+    /* overflow demo */
+    .overflowBox{
+      margin-top:12px;
+      border:2px solid #111;
+      background:#ffffff;
+      padding:10px;
+      height:70px;               /* dimension */
+      overflow:auto;             /* overflow */
+      font-size:13px;
+      line-height:1.45;
+    }
+
+    /* gallery demo (float) */
+    .gallery{
+      margin-top:12px;
+    }
+    .thumb{
+      float:left;
+      width:23%;
+      margin:1%;
+      height:60px;
+      border:2px solid #111;
+      background:linear-gradient(135deg,#1f1f1f,#a0a0a0);
+    }
+
+    /* multi column demo */
+    .columns{
+      margin-top:12px;
+      column-count:2;            /* multi column */
+      column-gap:18px;
+      font-size:13px;
+      line-height:1.55;
+    }
+
+    /* clear floats */
+    .clear{ clear:both; }
+
+    /* ===== FOOTER ===== */
+    .footer{
+      background:#111;
+      color:#fff;
+      text-align:center;
+      font-size:12px;
+      padding:12px 10px;
+      margin-top:0;
+      clear:both;                /* penting biar footer turun */
+    }
+
+    /* responsive sederhana */
+    @media(max-width:820px){
+      .left,.right{ float:none; width:100%; }
+      .eduRow{ flex-wrap:wrap; }
+      .eduBox{ width:48%; }
+      .columns{ column-count:1; }
+      .thumb{ width:48%; }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="page">
+
+    <div class="pageTitle">WEB PORTOFOLIO KU</div>
+
+    <div class="banner">
+      <div class="menu">
+        <a href="#home">HOME</a>
+        <a href="#profile">PROFILE</a>
+        <a href="#contact">CONTACT</a>
+      </div>
+    </div>
+
+    <div class="content" id="home">
+      <!-- KIRI -->
+      <div class="left">
+        <h3>TENTANG AKU</h3>
+        <p>
+          Halo! Saya adalah siswa yang sedang belajar <b>CSS Layouting</b>.
+          Halaman ini dibuat untuk tugas praktikum dengan materi:
+          DIV, display, dimension, overflow, box model, box sizing, float, dan position.
+        </p>
+        <p>
+          Saya suka belajar web design, membuat halaman sederhana,
+          dan mencoba berbagai teknik layout agar rapi.
+        </p>
+        <p>
+          (Bagian kiri ini memakai <b>float</b>, <b>dimension</b>, dan <b>box model</b>.)
+        </p>
+      </div>
+
+      <!-- KANAN -->
+      <div class="right" id="profile">
+        <div class="eduRow">
+          <div class="eduBox">SD</div>
+          <div class="eduBox">SMP</div>
+          <div class="eduBox">SMA</div>
+          <div class="eduBox">S1</div>
+        </div>
+
+        <p style="margin:0 0 10px 0; font-size:13px;">
+          <b>Kisah Sekolahku :</b>
+          Saya pernah belajar di beberapa jenjang pendidikan. Di sini saya menuliskan ringkasan pengalaman belajar saya.
+        </p>
+
+        <!-- FLOAT TEXT WRAPPING -->
+        <div class="wrapDemo">
+          <div class="fakeImg" title="contoh gambar (float)"></div>
+          <p style="font-size:13px; line-height:1.55; margin:0;">
+            Ini contoh <b>float text wrapping</b>. Kotak di samping dibuat seperti gambar,
+            lalu teks akan mengalir mengelilinginya. Teknik ini termasuk materi <b>float</b>.
+          </p>
+          <div class="clear"></div>
+        </div>
+
+        <!-- OVERFLOW -->
+        <div class="overflowBox">
+          Ini contoh <b>overflow:auto</b>. Teks yang terlalu panjang akan membuat box bisa discroll.
+          Ini contoh overflow:auto. Ini contoh overflow:auto. Ini contoh overflow:auto.
+          Ini contoh overflow:auto. Ini contoh overflow:auto.
+        </div>
+
+        <!-- IMAGE GALLERY (FLOAT) -->
+        <div class="gallery">
+          <div class="thumb"></div>
+          <div class="thumb"></div>
+          <div class="thumb"></div>
+          <div class="thumb"></div>
+          <div class="clear"></div>
+        </div>
+
+        <!-- MULTI COLUMN -->
+        <div class="columns" id="contact">
+          Ini contoh <b>multi column layout</b> menggunakan <b>column-count</b>.
+          Biasanya dipakai untuk artikel agar seperti koran.
+          Selain itu, halaman ini juga menerapkan <b>box-sizing:border-box</b>
+          supaya ukuran elemen tetap rapi walau ada padding dan border.
+        </div>
+
+      </div>
+
+      <div class="clear"></div>
+    </div>
+
+    <div class="footer">
+      Copyright 2021 - moch yusuf ayshari. all right reserved
+    </div>
+
+  </div>
+
+</body>
+</html>
